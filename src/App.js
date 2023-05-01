@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Products from "./components/Products";
 import ShoppingCart from "./components/ShoppingCart";
 import { CartContext } from "./contexts/CartContext";
+import { nanoid } from "nanoid";
 
 function App() {
   const [products, setProducts] = useState(data);
@@ -23,7 +24,7 @@ function App() {
   };
 
   const addItem = (item) => {
-    const updatedCart = [...cart, item];
+    const updatedCart = [...cart, { ...item, id: nanoid() }];
     setCart(updatedCart);
     updateLS(updatedCart);
   };
