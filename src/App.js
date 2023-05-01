@@ -35,6 +35,11 @@ function App() {
     updateLS(updatedCart);
   };
 
+  const clearCart = () => {
+    setCart([]);
+    updateLS([]);
+  };
+
   //localStorage.clear();
 
   console.log(cart);
@@ -45,7 +50,7 @@ function App() {
 
   return (
     <ProductContext.Provider value={{ products, setProducts, addItem }}>
-      <CartContext.Provider value={{ cart, removeItemFromCart }}>
+      <CartContext.Provider value={{ cart, removeItemFromCart, clearCart }}>
         <div className="App">
           <Navigation />
 

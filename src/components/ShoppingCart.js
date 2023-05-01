@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 import Item from "./ShoppingCartItem";
 
 const ShoppingCart = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const getCartTotal = () => {
     return cart
@@ -26,6 +26,7 @@ const ShoppingCart = () => {
 
       <ScCartCheckout>
         <p>Total: ${getCartTotal()}</p>
+        <button onClick={() => clearCart()}>Clear Cart</button>
         <button>Checkout</button>
       </ScCartCheckout>
     </div>
