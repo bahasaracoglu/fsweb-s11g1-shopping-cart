@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ScCartCheckout } from "./scParts";
 import { CartContext } from "../contexts/CartContext";
-
+import { nanoid } from "nanoid";
 // Components
 import Item from "./ShoppingCartItem";
 
@@ -16,10 +16,12 @@ const ShoppingCart = () => {
       .toFixed(2);
   };
 
+  //console.log(nanoid());
+
   return (
     <div>
       {cart.map((item) => (
-        <Item key={item.id} {...item} />
+        <Item key={nanoid()} {...item} />
       ))}
 
       <ScCartCheckout>

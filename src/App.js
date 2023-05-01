@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route } from "react-router-dom";
 import { data } from "./data";
 import { ProductContext } from "./contexts/ProductContext";
@@ -13,13 +13,35 @@ function App() {
   const [products, setProducts] = useState(data);
   const [cart, setCart] = useState([]);
 
+  const updateLS = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const getCartFromLS = () => {
+    const LSdata = JSON.parse(localStorage.getItem("cart", cart));
+    LSdata && setCart(LSdata);
+  };
+
   const addItem = (item) => {
-    setCart([...cart, item]);
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
+    updateLS(updatedCart);
   };
 
   const removeItemFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    console.log("consoled id", id);
+    const updatedCart = cart.filter((item) => item.id !== id);
+    setCart(updatedCart);
+    updateLS(updatedCart);
   };
+
+  //localStorage.clear();
+
+  console.log(cart);
+
+  useEffect(() => {
+    getCartFromLS();
+  }, []);
 
   return (
     <ProductContext.Provider value={{ products, setProducts, addItem }}>
