@@ -15,13 +15,15 @@ function App() {
 
   const addItem = (item) => {
     setCart([...cart, item]);
-    // verilen itemi sepete ekleyin
-    //console.log(cart);
+  };
+
+  const removeItemFromCart = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
   };
 
   return (
     <ProductContext.Provider value={{ products, setProducts, addItem }}>
-      <CartContext.Provider value={{ cart, setCart }}>
+      <CartContext.Provider value={{ cart, removeItemFromCart }}>
         <div className="App">
           <Navigation />
 

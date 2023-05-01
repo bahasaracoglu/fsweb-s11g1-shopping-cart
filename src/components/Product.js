@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ScProduct } from "./scParts";
+import { ProductContext } from "../contexts/ProductContext";
 
 const Product = (props) => {
+  const { addItem } = useContext(ProductContext);
   return (
     <ScProduct>
       <img src={props.product.image} alt={`${props.product.title} book`} />
@@ -11,7 +13,7 @@ const Product = (props) => {
           <p className="price">${props.product.price}</p>
           <button
             onClick={(e) => {
-              props.addItem(props.product);
+              addItem(props.product);
             }}
           >
             Add to cart
