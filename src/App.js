@@ -41,8 +41,6 @@ function App() {
     updateLS([]);
   };
 
-  //localStorage.clear();
-
   console.log(cart);
 
   useEffect(() => {
