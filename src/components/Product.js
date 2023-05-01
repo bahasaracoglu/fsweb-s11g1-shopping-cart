@@ -9,7 +9,11 @@ const Product = (props) => {
         <h1 className="title">{props.product.title}</h1>
         <div className="footer">
           <p className="price">${props.product.price}</p>
-          <button onClick={() => props.addItem(props.product)}>
+          <button
+            onClick={(e) => {
+              props.addItem(props.product);
+            }}
+          >
             Add to cart
           </button>
         </div>
